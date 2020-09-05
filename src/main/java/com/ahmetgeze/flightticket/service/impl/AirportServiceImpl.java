@@ -19,7 +19,8 @@ public class AirportServiceImpl implements AirportService {
 
     @Override
     public SaveResponse saveAirport(String name) {
-        Airport airport = new Airport(name);
+        Airport airport = new Airport();
+        airport.setName(name);
         airportsDao.saveAirport(airport);
         return new SaveResponse(HttpStatus.OK, "Save New Airport with Succes", true, airport);
     }
