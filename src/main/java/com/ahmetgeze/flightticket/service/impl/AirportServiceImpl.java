@@ -1,7 +1,7 @@
 package com.ahmetgeze.flightticket.service.impl;
 
 import com.ahmetgeze.flightticket.dao.impl.AirportsDao;
-import com.ahmetgeze.flightticket.entity.Airports;
+import com.ahmetgeze.flightticket.entity.Airport;
 import com.ahmetgeze.flightticket.model.response.SaveResponse;
 import com.ahmetgeze.flightticket.model.response.SearchResponse;
 import com.ahmetgeze.flightticket.service.contract.AirportService;
@@ -19,14 +19,14 @@ public class AirportServiceImpl implements AirportService {
 
     @Override
     public SaveResponse saveAirport(String name) {
-        Airports airport = new Airports(name);
+        Airport airport = new Airport(name);
         airportsDao.saveAirport(airport);
         return new SaveResponse(HttpStatus.OK, "Save New Airport with Succes", true, airport);
     }
 
     @Override
     public SearchResponse searchAirport(String name) {
-        List<Airports> airports =  airportsDao.searchAirportsWithName(name);
+        List<Airport> airports =  airportsDao.searchAirportsWithName(name);
         return new SearchResponse(HttpStatus.OK, "Get Airports with Succes", true, airports);
     }
 

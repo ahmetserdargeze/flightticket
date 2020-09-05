@@ -1,8 +1,6 @@
 package com.ahmetgeze.flightticket.controller;
 
 import com.ahmetgeze.flightticket.dao.impl.AirportsDao;
-import com.ahmetgeze.flightticket.entity.Airports;
-import com.ahmetgeze.flightticket.model.exception.ExceptionDetails;
 import com.ahmetgeze.flightticket.model.response.SaveResponse;
 import com.ahmetgeze.flightticket.model.response.SearchResponse;
 import com.ahmetgeze.flightticket.service.contract.AirportService;
@@ -10,8 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequestMapping(value = "airports")

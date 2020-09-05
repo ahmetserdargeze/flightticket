@@ -1,7 +1,7 @@
 package com.ahmetgeze.flightticket.dao.impl;
 
 import com.ahmetgeze.flightticket.dao.contract.AirportsDaoContract;
-import com.ahmetgeze.flightticket.entity.Airports;
+import com.ahmetgeze.flightticket.entity.Airport;
 import com.ahmetgeze.flightticket.model.exception.ExceptionCategory;
 import com.ahmetgeze.flightticket.model.exception.ExceptionCode;
 import com.ahmetgeze.flightticket.model.exception.GeneralException;
@@ -19,7 +19,7 @@ public class AirportsDao implements AirportsDaoContract {
 
 
     @Override
-    public List<Airports> searchAirportsWithName(String name) {
+    public List<Airport> searchAirportsWithName(String name) {
         try {
            return airportsRepository.findByNameContains(name.toUpperCase());
         }catch (Exception e){
@@ -28,9 +28,9 @@ public class AirportsDao implements AirportsDaoContract {
     }
 
     @Override
-    public Boolean saveAirport(Airports airports) {
+    public Boolean saveAirport(Airport airport) {
         try {
-            airportsRepository.save(airports);
+            airportsRepository.save(airport);
             return true;
         }catch (Exception e){
             throw(new GeneralException(ExceptionCategory.DB_EXEPTİON,ExceptionCode.AIRPORT_SAVE_ERR_1,e));

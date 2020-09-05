@@ -8,8 +8,8 @@ import java.util.Date;
 import java.util.UUID;
 
 @Entity
-@Table(name = "airports")
-public class Airports {
+@Table(name = "airport")
+public class Airport {
 
     @Id
     @Type(type="uuid-char")
@@ -30,11 +30,11 @@ public class Airports {
     private Date updateDate;
 
 
-    public Airports() {
+    public Airport() {
     }
 
 
-    public Airports(String name) {
+    public Airport(String name) {
         super();
         this.id=UUID.randomUUID();
         this.name = name.isEmpty() ? null :name;
