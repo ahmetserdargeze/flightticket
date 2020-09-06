@@ -6,6 +6,7 @@ import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -16,12 +17,12 @@ public class Route extends BaseEntity {
     private UUID id;
 
     //    @ManyToOne(cascade = CascadeType.ALL, optional = false)
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "departure_fk", referencedColumnName = "id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Airport departureAirport;
 
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JoinColumn(name = "arrival_fk", referencedColumnName = "id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Airport arrivalAirport;
@@ -48,5 +49,19 @@ public class Route extends BaseEntity {
 
     public void setArrivalAirport(Airport arrivalAirport) {
         this.arrivalAirport = arrivalAirport;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Route route = (Route) o;
+        return Objects.equals(id, route.id);
+
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, departureAirport, arrivalAirport);
     }
 }

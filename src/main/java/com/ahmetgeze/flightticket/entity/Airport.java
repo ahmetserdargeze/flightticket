@@ -6,10 +6,7 @@ import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
-import java.util.Date;
-import java.util.List;
-import java.util.Set;
-import java.util.UUID;
+import java.util.*;
 
 @Entity
 @Table(name = "airport")
@@ -63,5 +60,19 @@ public class Airport extends BaseEntity {
 
     public void setArrivalRoute(List<Route> arrivalRoute) {
         this.arrivalRoute = arrivalRoute;
+    }
+
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Airport airport = (Airport) o;
+        return Objects.equals(id, airport.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, departureRoute, arrivalRoute);
     }
 }
