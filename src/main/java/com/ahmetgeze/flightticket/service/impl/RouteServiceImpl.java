@@ -66,4 +66,34 @@ public class RouteServiceImpl implements RouteService {
             throw (new GeneralException(ExceptionCategory.SERVİCE_EXCEPTİON, ExceptionCode.NULL_INPUT_ERR, new NullPointerException()));
         }
     }
+
+    @Override
+    public SearchResponse searchWithDepertureName(String depertureAirportName) {
+        if (UtilsFunc.isNotNull(depertureAirportName)) {
+            List<Route> searchedData = routeDao.searchWithDepartureAirportName(depertureAirportName);
+            return new SearchResponse(HttpStatus.OK, !searchedData.isEmpty() ? "Searched Deperture Route with Succes" : "Searched Deperture Route with Succes but Resultset is emty", true, searchedData);
+        } else {
+            throw (new GeneralException(ExceptionCategory.SERVİCE_EXCEPTİON, ExceptionCode.NULL_INPUT_ERR, new NullPointerException()));
+        }
+    }
+
+    @Override
+    public SearchResponse searchWithArrivalName(String arrivalAirportName) {
+        if (UtilsFunc.isNotNull(arrivalAirportName)) {
+            List<Route> searchedData = routeDao.searchWithArrivalAirportName(arrivalAirportName);
+            return new SearchResponse(HttpStatus.OK, !searchedData.isEmpty() ? "Searched Arrival Route with Succes" : "Searched Arrival Route with Succes but Resultset is emty", true, searchedData);
+        } else {
+            throw (new GeneralException(ExceptionCategory.SERVİCE_EXCEPTİON, ExceptionCode.NULL_INPUT_ERR, new NullPointerException()));
+        }
+    }
+
+    @Override
+    public SearchResponse searchWithDepertureNameAndArrivalName(String depertureAirportName, String arrivalAirportName) {
+        if (UtilsFunc.isNotNull(depertureAirportName, arrivalAirportName)) {
+            List<Route> searchedData = routeDao.searchWithDepertureAndArrivalAirportName(depertureAirportName, arrivalAirportName);
+            return new SearchResponse(HttpStatus.OK, !searchedData.isEmpty() ? "Searched Arrival Route with Succes" : "Searched Arrival Route with Succes but Resultset is emty", true, searchedData);
+        } else {
+            throw (new GeneralException(ExceptionCategory.SERVİCE_EXCEPTİON, ExceptionCode.NULL_INPUT_ERR, new NullPointerException()));
+        }
+    }
 }
