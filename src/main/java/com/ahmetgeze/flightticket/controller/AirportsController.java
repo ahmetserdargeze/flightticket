@@ -1,6 +1,6 @@
 package com.ahmetgeze.flightticket.controller;
 
-import com.ahmetgeze.flightticket.dao.impl.AirportsDao;
+import com.ahmetgeze.flightticket.dao.impl.AirportsDaoImpl;
 import com.ahmetgeze.flightticket.model.response.SaveResponse;
 import com.ahmetgeze.flightticket.model.response.SearchResponse;
 import com.ahmetgeze.flightticket.service.contract.AirportService;
@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.*;
 public class AirportsController {
 
     @Autowired
-    AirportsDao airportsDao;
+    AirportsDaoImpl airportsDaoImpl;
 
     @Autowired
     AirportService airportService;

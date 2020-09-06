@@ -9,9 +9,6 @@ import java.util.UUID;
 
 @MappedSuperclass
 public class BaseEntity {
-    @Id
-    @GeneratedValue
-    private UUID id;
 
 
     @Column(name = "create_date")
@@ -25,13 +22,6 @@ public class BaseEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date updateDate;
 
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
 
     public Date getCreateDate() {
         return createDate;

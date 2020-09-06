@@ -1,6 +1,7 @@
 package com.ahmetgeze.flightticket.service.impl;
 
-import com.ahmetgeze.flightticket.dao.impl.AirportsDao;
+import com.ahmetgeze.flightticket.dao.contract.AirportsDaoContract;
+import com.ahmetgeze.flightticket.dao.impl.AirportsDaoImpl;
 import com.ahmetgeze.flightticket.entity.Airport;
 import com.ahmetgeze.flightticket.model.response.SaveResponse;
 import com.ahmetgeze.flightticket.model.response.SearchResponse;
@@ -14,20 +15,20 @@ import java.util.List;
 @Service
 public class AirportServiceImpl implements AirportService {
     @Autowired
-    AirportsDao airportsDao;
+    AirportsDaoContract airportDao;
 
 
     @Override
     public SaveResponse saveAirport(String name) {
         Airport airport = new Airport();
-        airport.setName(name);
-        airportsDao.saveAirport(airport);
+        airport.setName(name.toUpperCase());
+        airportDao.saveAirport(airport);
         return new SaveResponse(HttpStatus.OK, "Save New Airport with Succes", true, airport);
     }
 
     @Override
     public SearchResponse searchAirport(String name) {
-        List<Airport> airports =  airportsDao.searchAirportsWithName(name);
+        List<Airport> airports =  airportDao.searchAirportsWithName(name.toUpperCase());
         return new SearchResponse(HttpStatus.OK, "Get Airports with Succes", true, airports);
     }
 
