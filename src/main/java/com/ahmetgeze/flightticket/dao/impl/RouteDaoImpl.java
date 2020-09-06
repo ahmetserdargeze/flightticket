@@ -21,6 +21,15 @@ public class RouteDaoImpl implements RouteDao {
 
 
     @Override
+    public Route getById(UUID routeId) {
+        try {
+            return routeRepository.findById(routeId).get();
+        } catch (Exception e) {
+            throw (new GeneralException(ExceptionCategory.DB_EXEPTİON, ExceptionCode.ROUTE_GET_ERR_1, e));
+        }
+    }
+
+    @Override
     public Boolean saveRoute(Route route) {
         try {
             route =routeRepository.save(route);

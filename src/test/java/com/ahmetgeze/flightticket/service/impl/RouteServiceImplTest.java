@@ -1,6 +1,5 @@
 package com.ahmetgeze.flightticket.service.impl;
 
-import com.ahmetgeze.flightticket.controller.RouteController;
 import com.ahmetgeze.flightticket.entity.Airport;
 import com.ahmetgeze.flightticket.entity.Route;
 import com.ahmetgeze.flightticket.model.exception.ExceptionCategory;
@@ -13,11 +12,9 @@ import com.ahmetgeze.flightticket.repository.RouteRepository;
 import com.ahmetgeze.flightticket.service.contract.AirportService;
 import com.ahmetgeze.flightticket.service.contract.RouteService;
 import com.ahmetgeze.flightticket.utils.UtilsFunc;
-import org.hamcrest.CoreMatchers;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 
-import org.junit.Before;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -176,7 +173,7 @@ public class RouteServiceImplTest {
         });
         assertNotNull(exception);
         assertEquals(exception.getCategory(), ExceptionCategory.SERVİCE_EXCEPTİON);
-        assertEquals(exception.getCode(), ExceptionCode.EQUAL_DEPERTURE_ARRIVAL_ROUTE_ID);
+        assertEquals(exception.getCode(), ExceptionCode.EQUAL_DEPERTURE_ARRIVAL_ROUTE_ID_ERR_1);
     }
 
     @Test

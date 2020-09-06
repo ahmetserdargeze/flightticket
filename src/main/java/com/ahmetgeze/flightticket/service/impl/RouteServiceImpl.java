@@ -40,7 +40,7 @@ public class RouteServiceImpl implements RouteService {
                 routeDao.saveRoute(route);
                 return new SaveResponse(HttpStatus.OK, "Save New Route with Succes", true, route);
             } else {
-                throw (new GeneralException(ExceptionCategory.SERVİCE_EXCEPTİON, ExceptionCode.EQUAL_DEPERTURE_ARRIVAL_ROUTE_ID, new Exception()));
+                throw (new GeneralException(ExceptionCategory.SERVİCE_EXCEPTİON, ExceptionCode.EQUAL_DEPERTURE_ARRIVAL_ROUTE_ID_ERR_1, new Exception()));
             }
         } else {
             throw (new GeneralException(ExceptionCategory.SERVİCE_EXCEPTİON, ExceptionCode.NULL_INPUT_ERR, new NullPointerException()));

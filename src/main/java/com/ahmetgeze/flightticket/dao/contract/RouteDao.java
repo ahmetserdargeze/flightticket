@@ -6,6 +6,8 @@ import java.util.List;
 import java.util.UUID;
 
 public interface RouteDao {
+     Route getById(UUID routeId);
+
      Boolean saveRoute(Route route) ;
 
      List<Route> filterRouteWithArrivalId(UUID arrivalId);
@@ -14,5 +16,6 @@ public interface RouteDao {
      List<Route> searchWithDepartureAirportName(String depertureAirportName);
      List<Route> searchWithArrivalAirportName(String arrivalAirport);
      List<Route> searchWithDepertureAndArrivalAirportName(String depertureAirportName,String arrivalAirportName);
+
 
     }

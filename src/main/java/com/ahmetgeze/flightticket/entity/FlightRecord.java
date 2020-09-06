@@ -5,6 +5,7 @@ import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.Objects;
 import java.util.UUID;
 
 @Entity
@@ -100,5 +101,24 @@ public class FlightRecord extends BaseEntity {
 
     public void setArrivalDate(Date arrivalDate) {
         this.arrivalDate = arrivalDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        FlightRecord that = (FlightRecord) o;
+        return fligtSeatCount == that.fligtSeatCount &&
+                Objects.equals(id, that.id) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(airlinesCompany, that.airlinesCompany) &&
+                Objects.equals(route, that.route) &&
+                Objects.equals(departureDate, that.departureDate) &&
+                Objects.equals(arrivalDate, that.arrivalDate);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, name, airlinesCompany, route, fligtSeatCount, departureDate, arrivalDate);
     }
 }
