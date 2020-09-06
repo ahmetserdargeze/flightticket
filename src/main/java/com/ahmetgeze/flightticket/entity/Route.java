@@ -1,11 +1,13 @@
 package com.ahmetgeze.flightticket.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.Fetch;
 import org.hibernate.annotations.FetchMode;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -26,6 +28,19 @@ public class Route extends BaseEntity {
     @JoinColumn(name = "arrival_fk", referencedColumnName = "id", nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
     private Airport arrivalAirport;
+
+    @OneToMany(cascade = CascadeType.ALL,
+            mappedBy = "route")
+    @JsonIgnore
+    private List<FlightRecord>  flightRecords;
+
+    public List<FlightRecord> getFlightRecords() {
+        return flightRecords;
+    }
+
+    public void setFlightRecords(List<FlightRecord> flightRecords) {
+        this.flightRecords = flightRecords;
+    }
 
     public UUID getId() {
         return id;
