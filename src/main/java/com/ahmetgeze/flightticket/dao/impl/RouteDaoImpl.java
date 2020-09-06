@@ -23,7 +23,7 @@ public class RouteDaoImpl implements RouteDaoContract {
     @Override
     public Boolean saveRoute(Route route) {
         try {
-            routeRepository.save(route);
+            route =routeRepository.save(route);
             return true;
         } catch (Exception e) {
             throw (new GeneralException(ExceptionCategory.DB_EXEPTİON, ExceptionCode.ROUTE_SAVE_ERR_1, e));
