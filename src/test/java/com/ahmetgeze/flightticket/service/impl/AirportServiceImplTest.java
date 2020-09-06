@@ -8,6 +8,7 @@ import com.ahmetgeze.flightticket.repository.AirportRepository;
 import com.ahmetgeze.flightticket.service.contract.AirportService;
 import org.junit.Before;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,8 +30,12 @@ public class AirportServiceImplTest {
         assertNotNull(airportService);
     }
 
-    String airportName1 = "Atatürk Havalimanı";
-    String airportName2 = "Sabiha Gökçen Havalimanı";
+    @BeforeEach
+    void deletAllRecord() {
+        airportRepository.deleteAll();
+    }
+    String airportName1 = "ATATURK HAVALİMANI";
+    String airportName2 = "SABİHA GÖKÇEN HAVALİMANI";
 
 
     @Test
@@ -71,7 +76,6 @@ public class AirportServiceImplTest {
     void searchAirportWithNameMultipleResult() {
         airportService.saveAirport(airportName1);
         airportService.saveAirport(airportName2);
-
         List<Airport> result = (List<Airport>) airportService.searchAirport("Havalimanı").getSearchResult();
         assertNotNull(result);
         assertTrue(result.size() == 2);

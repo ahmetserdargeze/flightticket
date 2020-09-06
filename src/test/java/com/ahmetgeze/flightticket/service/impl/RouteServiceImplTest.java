@@ -11,12 +11,14 @@ import com.ahmetgeze.flightticket.repository.AirportRepository;
 import com.ahmetgeze.flightticket.repository.RouteRepository;
 import com.ahmetgeze.flightticket.service.contract.AirportService;
 import com.ahmetgeze.flightticket.service.contract.RouteService;
-import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import com.ahmetgeze.flightticket.utils.UtilsFunc;
+import org.junit.Before;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.HttpStatus;
 
+import java.util.List;
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -27,21 +29,44 @@ public class RouteServiceImplTest {
     AirportService airportService;
 
     @Autowired
+    AirportRepository airportRepository;
+
+    @Autowired
     RouteService routeService;
 
     @Autowired
     RouteRepository routeRepository;
 
-    String airport1 = "Atatürk Havaalanı";
-    String airport2 = "Sabiha Gökçen Havaalanı";
+    String airport1Name = "Atatürk Havaalanı";
+    String airport2Name = "Sabiha Gökçen Havaalanı";
 
-    RouteController routeController = new RouteController();
+    /*
+        Airport airport1;
+        Airport airport2;
+    */
+    Airport airport1;
+    Airport airport2;
 
+    @BeforeEach
+    void setUp() {
+        Airport tmpAirport  = new Airport();
+        Airport tmpAirport2  = new Airport();
+        tmpAirport.setName(UtilsFunc.toUpperCaseWithTurkishCharacter(airport1Name));
+        tmpAirport2.setName(UtilsFunc.toUpperCaseWithTurkishCharacter(airport2Name));
+
+        airport1 = airportRepository.save(tmpAirport);
+        airport2 = airportRepository.save(tmpAirport2);
+    }
+
+    @AfterEach
+    void delete() {
+       airportRepository.deleteAll();
+    }
 
     @Test
     void createRouteTest() {
-        UUID depertureId = ((Airport) airportService.saveAirport(airport1).getInsertedObject()).getId();
-        UUID arrivalId = ((Airport) airportService.saveAirport(airport2).getInsertedObject()).getId();
+        UUID depertureId = airport1.getId();
+        UUID arrivalId = airport2.getId();
         SaveResponse result = routeService.createRoute(depertureId, arrivalId);
         Route insertedObject = (Route) result.getInsertedObject();
 
@@ -53,7 +78,7 @@ public class RouteServiceImplTest {
 
     @Test
     void createRouteNullDepartureTest() {
-        UUID arrivalId = ((Airport) airportService.saveAirport(airport2).getInsertedObject()).getId();
+        UUID arrivalId = airport2.getId();
         GeneralException exception = Assertions.assertThrows(GeneralException.class, () -> {
             routeService.createRoute(null, arrivalId);
         });
@@ -64,7 +89,7 @@ public class RouteServiceImplTest {
 
     @Test
     void createRouteNullArrivalTest() {
-        UUID depertureId = ((Airport) airportService.saveAirport(airport1).getInsertedObject()).getId();
+        UUID depertureId = airport1.getId();
         GeneralException exception = Assertions.assertThrows(GeneralException.class, () -> {
             routeService.createRoute(depertureId, null);
         });
@@ -75,7 +100,7 @@ public class RouteServiceImplTest {
 
     @Test
     void createRouteSameDepertureAndArrivalTest() {
-        UUID airportId = ((Airport) airportService.saveAirport(airport1).getInsertedObject()).getId();
+        UUID airportId = airport1.getId();
         GeneralException exception = Assertions.assertThrows(GeneralException.class, () -> {
             routeService.createRoute(airportId, airportId);
         });
@@ -83,9 +108,6 @@ public class RouteServiceImplTest {
         assertEquals(exception.getCategory(), ExceptionCategory.SERVİCE_EXCEPTİON);
         assertEquals(exception.getCode(), ExceptionCode.EQUAL_DEPERTURE_ARRIVAL_ROUTE_ID);
     }
-
-
-
 
 
 }
