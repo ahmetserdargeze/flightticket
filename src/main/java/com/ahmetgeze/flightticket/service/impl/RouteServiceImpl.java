@@ -1,7 +1,7 @@
 package com.ahmetgeze.flightticket.service.impl;
 
-import com.ahmetgeze.flightticket.dao.contract.AirportsDaoContract;
-import com.ahmetgeze.flightticket.dao.contract.RouteDaoContract;
+import com.ahmetgeze.flightticket.dao.contract.AirportsDao;
+import com.ahmetgeze.flightticket.dao.contract.RouteDao;
 import com.ahmetgeze.flightticket.entity.Airport;
 import com.ahmetgeze.flightticket.entity.Route;
 import com.ahmetgeze.flightticket.model.exception.ExceptionCategory;
@@ -22,10 +22,10 @@ import java.util.UUID;
 public class RouteServiceImpl implements RouteService {
 
     @Autowired
-    AirportsDaoContract airportDao;
+    AirportsDao airportDao;
 
     @Autowired
-    RouteDaoContract routeDao;
+    RouteDao routeDao;
 
 
     @Override

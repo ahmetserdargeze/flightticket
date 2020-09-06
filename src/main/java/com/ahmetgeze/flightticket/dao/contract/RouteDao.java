@@ -5,7 +5,7 @@ import com.ahmetgeze.flightticket.entity.Route;
 import java.util.List;
 import java.util.UUID;
 
-public interface RouteDaoContract {
+public interface RouteDao {
      Boolean saveRoute(Route route) ;
 
      List<Route> filterRouteWithArrivalId(UUID arrivalId);

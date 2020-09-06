@@ -1,7 +1,6 @@
 package com.ahmetgeze.flightticket.service.impl;
 
-import com.ahmetgeze.flightticket.dao.contract.AirportsDaoContract;
-import com.ahmetgeze.flightticket.dao.impl.AirportsDaoImpl;
+import com.ahmetgeze.flightticket.dao.contract.AirportsDao;
 import com.ahmetgeze.flightticket.entity.Airport;
 import com.ahmetgeze.flightticket.model.response.SaveResponse;
 import com.ahmetgeze.flightticket.model.response.SearchResponse;
@@ -16,7 +15,7 @@ import java.util.List;
 @Service
 public class AirportServiceImpl implements AirportService {
     @Autowired
-    AirportsDaoContract airportDao;
+    AirportsDao airportDao;
 
 
     @Override

@@ -1,7 +1,7 @@
 package com.ahmetgeze.flightticket.dao.impl;
 
 
-import com.ahmetgeze.flightticket.dao.contract.RouteDaoContract;
+import com.ahmetgeze.flightticket.dao.contract.RouteDao;
 import com.ahmetgeze.flightticket.entity.Route;
 import com.ahmetgeze.flightticket.model.exception.ExceptionCategory;
 import com.ahmetgeze.flightticket.model.exception.ExceptionCode;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Component
-public class RouteDaoImpl implements RouteDaoContract {
+public class RouteDaoImpl implements RouteDao {
 
     @Autowired
     RouteRepository routeRepository;

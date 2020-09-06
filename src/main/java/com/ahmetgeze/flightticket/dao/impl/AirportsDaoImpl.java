@@ -1,6 +1,6 @@
 package com.ahmetgeze.flightticket.dao.impl;
 
-import com.ahmetgeze.flightticket.dao.contract.AirportsDaoContract;
+import com.ahmetgeze.flightticket.dao.contract.AirportsDao;
 import com.ahmetgeze.flightticket.entity.Airport;
 import com.ahmetgeze.flightticket.model.exception.ExceptionCategory;
 import com.ahmetgeze.flightticket.model.exception.ExceptionCode;
@@ -14,7 +14,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Component
-public class AirportsDaoImpl implements AirportsDaoContract {
+public class AirportsDaoImpl implements AirportsDao {
 
     @Autowired
     AirportRepository airportRepository;
