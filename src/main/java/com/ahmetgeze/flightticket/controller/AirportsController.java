@@ -1,6 +1,5 @@
 package com.ahmetgeze.flightticket.controller;
 
-import com.ahmetgeze.flightticket.dao.contract.AirportsDao;
 import com.ahmetgeze.flightticket.model.response.SaveResponse;
 import com.ahmetgeze.flightticket.model.response.SearchResponse;
 import com.ahmetgeze.flightticket.service.contract.AirportService;
@@ -18,13 +17,13 @@ public class AirportsController {
 
     @GetMapping("/searchWithName")
     ResponseEntity<SearchResponse> searchAirportWithName(@RequestParam String name) {
-        SearchResponse response = airportService.searchAirport(name);
+        SearchResponse response = airportService.searchWithAirportName(name);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
     @PostMapping("/save")
     ResponseEntity<SaveResponse> saveAirport(@RequestParam String name) {
-        return new ResponseEntity<SaveResponse>(airportService.saveAirport(name), HttpStatus.OK);
+        return new ResponseEntity<SaveResponse>(airportService.createAirport(name), HttpStatus.OK);
     }
 
 

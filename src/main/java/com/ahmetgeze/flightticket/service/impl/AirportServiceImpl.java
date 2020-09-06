@@ -22,10 +22,10 @@ public class AirportServiceImpl implements AirportService {
 
 
     @Override
-    public SaveResponse saveAirport(String name) {
-        if (UtilsFunc.isNotNull(name)) {
+    public SaveResponse createAirport(String airportName) {
+        if (UtilsFunc.isNotNull(airportName)) {
             Airport airport = new Airport();
-            airport.setName(UtilsFunc.toUpperCaseWithTurkishCharacter(name));
+            airport.setName(UtilsFunc.toUpperCaseWithTurkishCharacter(airportName));
             airportDao.saveAirport(airport);
             return new SaveResponse(HttpStatus.OK, "Save New Airport with Succes", true, airport);
         } else {
@@ -34,9 +34,9 @@ public class AirportServiceImpl implements AirportService {
     }
 
     @Override
-    public SearchResponse searchAirport(String name) {
-        if (UtilsFunc.isNotNull(name)) {
-            List<Airport> airports = airportDao.searchAirportsWithName(UtilsFunc.toUpperCaseWithTurkishCharacter(name));
+    public SearchResponse searchWithAirportName(String airportName) {
+        if (UtilsFunc.isNotNull(airportName)) {
+            List<Airport> airports = airportDao.searchAirportsWithName(UtilsFunc.toUpperCaseWithTurkishCharacter(airportName));
             return new SearchResponse(HttpStatus.OK, "Get Airports with Succes", true, airports);
         } else {
             throw (new GeneralException(ExceptionCategory.SERVİCE_EXCEPTİON, ExceptionCode.NULL_INPUT_ERR, new NullPointerException()));

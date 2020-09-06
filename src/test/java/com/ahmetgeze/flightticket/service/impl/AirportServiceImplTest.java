@@ -4,6 +4,7 @@ import com.ahmetgeze.flightticket.entity.Airport;
 import com.ahmetgeze.flightticket.model.exception.ExceptionCategory;
 import com.ahmetgeze.flightticket.model.exception.ExceptionCode;
 import com.ahmetgeze.flightticket.model.exception.GeneralException;
+import com.ahmetgeze.flightticket.model.response.SearchResponse;
 import com.ahmetgeze.flightticket.repository.AirportRepository;
 import com.ahmetgeze.flightticket.service.contract.AirportService;
 import org.junit.Before;
@@ -39,8 +40,8 @@ public class AirportServiceImplTest {
 
 
     @Test
-    void testSaveAirport() {
-        airportService.saveAirport(airportName1);
+    void saveAirportTest() {
+        airportService.createAirport(airportName1);
         Airport airport = airportRepository.findByName(airportName1).get();
         assertNotNull(airport);
         assertEquals(airport.getName(), airportName1);
@@ -48,10 +49,10 @@ public class AirportServiceImplTest {
     }
 
     @Test
-    void testDuplicateNameError() {
+    void duplicateNameErrorTest() {
         GeneralException exception = Assertions.assertThrows(GeneralException.class, () -> {
-            airportService.saveAirport(airportName1);
-            airportService.saveAirport(airportName1);
+            airportService.createAirport(airportName1);
+            airportService.createAirport(airportName1);
         });
         assertNotNull(exception);
         assertEquals(exception.getCategory(), ExceptionCategory.DB_EXEPTİON);
@@ -59,25 +60,46 @@ public class AirportServiceImplTest {
     }
 
     @Test
-    void searchAirportWithNameSingleResult() {
-        airportService.saveAirport(airportName1);
-        airportService.saveAirport(airportName2);
+    void createAirportNullNameTest() {
+        GeneralException exception = Assertions.assertThrows(GeneralException.class, () -> {
+            airportService.createAirport(null);
+        });
+        assertNotNull(exception);
+        assertEquals(exception.getCategory(), ExceptionCategory.SERVİCE_EXCEPTİON);
+        assertEquals(exception.getCode(), ExceptionCode.NULL_INPUT_ERR);
+    }
 
-        List<Airport> result = (List<Airport>) airportService.searchAirport("Ata").getSearchResult();
+    @Test
+    void searchAirportWithNameSingleResultTest() {
+        airportService.createAirport(airportName1);
+        airportService.createAirport(airportName2);
+
+        List<Airport> result = (List<Airport>) airportService.searchWithAirportName("Ata").getSearchResult();
         assertNotNull(result);
         assertTrue(result.size() == 1);
         assertEquals(result.get(0).getName(), airportName1);
 
-        result = (List<Airport>) airportService.searchAirport("Havalimanı").getSearchResult();
+        result = (List<Airport>) airportService.searchWithAirportName("Havalimanı").getSearchResult();
 
     }
 
     @Test
-    void searchAirportWithNameMultipleResult() {
-        airportService.saveAirport(airportName1);
-        airportService.saveAirport(airportName2);
-        List<Airport> result = (List<Airport>) airportService.searchAirport("Havalimanı").getSearchResult();
+    void searchAirportWithNameMultipleResultTest() {
+        airportService.createAirport(airportName1);
+        airportService.createAirport(airportName2);
+        List<Airport> result = (List<Airport>) airportService.searchWithAirportName("Havalimanı").getSearchResult();
         assertNotNull(result);
         assertTrue(result.size() == 2);
     }
+
+    @Test
+    void searchWithAirportNameTestForNullAirportNameTest() {
+        GeneralException exception = Assertions.assertThrows(GeneralException.class, () -> {
+           airportService.searchWithAirportName(null);
+        });
+        assertNotNull(exception);
+        assertEquals(exception.getCategory(), ExceptionCategory.SERVİCE_EXCEPTİON);
+        assertEquals(exception.getCode(), ExceptionCode.NULL_INPUT_ERR);
+    }
+
 }
