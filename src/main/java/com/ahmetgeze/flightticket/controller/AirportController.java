@@ -10,20 +10,26 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping(value = "airports")
-public class AirportsController {
+public class AirportController {
     @Autowired
     AirportService airportService;
 
 
-    @GetMapping("/searchWithName")
+    @PostMapping("/create")
+    ResponseEntity<SaveResponse> createAirport(@RequestParam String name) {
+        return new ResponseEntity<SaveResponse>(airportService.createAirport(name), HttpStatus.OK);
+    }
+
+
+    @GetMapping("/search")
     ResponseEntity<SearchResponse> searchAirportWithName(@RequestParam String name) {
         SearchResponse response = airportService.searchWithAirportName(name);
         return ResponseEntity.status(HttpStatus.OK).body(response);
     }
 
-    @PostMapping("/save")
-    ResponseEntity<SaveResponse> saveAirport(@RequestParam String name) {
-        return new ResponseEntity<SaveResponse>(airportService.createAirport(name), HttpStatus.OK);
+    @GetMapping("/list")
+    ResponseEntity<SearchResponse> listAirports() {
+        return new ResponseEntity<SearchResponse>(airportService.listAirports(), HttpStatus.OK);
     }
 
 

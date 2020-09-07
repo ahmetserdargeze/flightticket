@@ -51,4 +51,12 @@ public class AirportsDaoImpl implements AirportsDao {
             throw (new GeneralException(ExceptionCategory.DB_EXEPTİON, ExceptionCode.NULL_INPUT_ERR, new NullPointerException()));
         }
     }
+
+    @Override
+    public List<Airport> listAirports() {
+        try {
+            return airportRepository.findAll();
+        } catch (Exception e) {
+            throw (new GeneralException(ExceptionCategory.DB_EXEPTİON, ExceptionCode.AIRPORT_GET_ERR_2, e));
+        }    }
 }

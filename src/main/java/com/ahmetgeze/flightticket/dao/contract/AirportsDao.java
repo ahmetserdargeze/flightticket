@@ -9,5 +9,6 @@ public interface AirportsDao {
     List<Airport> searchAirportsWithName(String name);
     Boolean saveAirport(Airport airport);
     Airport getByAirportId(UUID airportId);
+    List<Airport> listAirports();
 
 }

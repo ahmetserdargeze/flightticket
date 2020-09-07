@@ -4,6 +4,7 @@ public enum ExceptionCode {
     AIRPORT_SAVE_ERR_1,
     AIRPORT_SEARCH_ERR_1,
     AIRPORT_GET_ERR_1,
+    AIRPORT_GET_ERR_2,
     ROUTE_SAVE_ERR_1,
     ROUTE_GET_ERR_1,
     ROUTE_SEARCH_ERR_1,

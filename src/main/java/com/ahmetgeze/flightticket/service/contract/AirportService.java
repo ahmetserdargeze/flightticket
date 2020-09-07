@@ -6,6 +6,7 @@ import com.ahmetgeze.flightticket.model.response.SearchResponse;
 public interface AirportService{
     SaveResponse createAirport(String airportName);
     SearchResponse searchWithAirportName(String airportName);
+    SearchResponse listAirports();
 
 
 

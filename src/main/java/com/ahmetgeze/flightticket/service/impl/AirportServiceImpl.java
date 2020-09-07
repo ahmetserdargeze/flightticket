@@ -43,6 +43,12 @@ public class AirportServiceImpl implements AirportService {
         }
     }
 
+    @Override
+    public SearchResponse listAirports() {
+        List<Airport> flightRecords = airportDao.listAirports();
+        return new SearchResponse(HttpStatus.OK, !flightRecords.isEmpty() ? "List Airports  with Succes" : "Listed Airports with Succes but Resultset is empty", true, flightRecords);
+    }
+
 }
 
 
