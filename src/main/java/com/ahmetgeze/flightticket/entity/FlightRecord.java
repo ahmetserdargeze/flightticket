@@ -124,9 +124,7 @@ public class FlightRecord extends BaseEntity {
                 Objects.equals(id, that.id) &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(airlinesCompany, that.airlinesCompany) &&
-                Objects.equals(route, that.route) &&
-                Objects.equals(departureDate, that.departureDate) &&
-                Objects.equals(arrivalDate, that.arrivalDate);
+                Objects.equals(route, that.route);
     }
 
     @Override

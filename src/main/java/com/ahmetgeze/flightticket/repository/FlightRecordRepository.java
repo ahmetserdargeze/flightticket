@@ -10,7 +10,7 @@ import java.util.UUID;
 
 @Repository
 public interface FlightRecordRepository extends JpaRepository<FlightRecord, UUID> {
-    List<FlightRecord> findByAirlinesCompanyIdAndRouteIdAndDepartureDateBetweenAndArrivalDateBetween(UUID companyId, UUID routeId, Date depertureStartDate,Date depertureEndDate,Date arrivalStartDate,Date arrivalEndDate);
+    List<FlightRecord> findByAirlinesCompanyIdAndRouteIdAndDepartureDateBetween(UUID companyId, UUID routeId, Date depertureStartDate,Date depertureEndDate);
 
 
 }

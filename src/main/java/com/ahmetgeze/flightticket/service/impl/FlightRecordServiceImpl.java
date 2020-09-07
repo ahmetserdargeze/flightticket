@@ -64,31 +64,23 @@ public class FlightRecordServiceImpl implements FlightRecordService {
     }
 
     @Override
-    public SearchResponse searchFlightRecord(UUID airlinesCompanyId, UUID routeId, Date depertureDate, Date arrivalDate) {
-        if (UtilsFunc.isNotNull(airlinesCompanyId, routeId, routeId, depertureDate, arrivalDate)) {
-            if (arrivalDate.getTime() > depertureDate.getTime()) {
-                FlightRecord flightRecord = new FlightRecord();
+    public SearchResponse searchFlightRecord(UUID airlinesCompanyId, UUID routeId, Date depertureDate) {
+        if (UtilsFunc.isNotNull(airlinesCompanyId, routeId, routeId, depertureDate)) {
+            FlightRecord flightRecord = new FlightRecord();
 
-                AirlinesCompany airlinesCompany = new AirlinesCompany();
-                airlinesCompany.setId(airlinesCompanyId);
-                flightRecord.setAirlinesCompany(airlinesCompany);
-
-
-                Route route = new Route();
-                route.setId(routeId);
-                flightRecord.setRoute(route);
-
-                flightRecord.setDepartureDate(depertureDate);
-                flightRecord.setArrivalDate(arrivalDate);
-
-                List<FlightRecord> flightRecords = flightRecordDao.searchFlightRecordWithAirlinesCompanyAndRouteAndDepertureDateAndArrivalDate(flightRecord);
-
-                return new SearchResponse(HttpStatus.OK, !flightRecords.isEmpty() ? "Searched Flight Record with Succes" : "Searched Flight Record  with Succes but Resultset is empty", true, flightRecords);
+            AirlinesCompany airlinesCompany = new AirlinesCompany();
+            airlinesCompany.setId(airlinesCompanyId);
+            flightRecord.setAirlinesCompany(airlinesCompany);
 
 
-            } else {
-                throw (new GeneralException(ExceptionCategory.SERVİCE_EXCEPTİON, ExceptionCode.FLIGHT_RECORD_DATE_ERR_1, new Exception()));
-            }
+            Route route = new Route();
+            route.setId(routeId);
+            flightRecord.setRoute(route);
+            flightRecord.setDepartureDate(depertureDate);
+
+            List<FlightRecord> flightRecords = flightRecordDao.searchFlightRecordWithAirlinesCompanyAndRouteAndDepertureDateAndArrivalDate(flightRecord);
+
+            return new SearchResponse(HttpStatus.OK, !flightRecords.isEmpty() ? "Searched Flight Record with Succes" : "Searched Flight Record  with Succes but Resultset is empty", true, flightRecords);
         } else {
             throw (new GeneralException(ExceptionCategory.SERVİCE_EXCEPTİON, ExceptionCode.NULL_INPUT_ERR, new NullPointerException()));
         }
