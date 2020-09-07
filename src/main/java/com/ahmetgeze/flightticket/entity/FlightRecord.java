@@ -1,10 +1,12 @@
 package com.ahmetgeze.flightticket.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -31,6 +33,13 @@ public class FlightRecord extends BaseEntity {
     private Route route;
 
 
+    @OneToMany(cascade = CascadeType.ALL,
+            mappedBy = "flightRecord")
+    @JsonIgnore
+    @Column(nullable = true)
+    private List<FlightTicket> flightTickets;
+
+
     @Column(name = "flight_seat_count", nullable = false)
     private int fligtSeatCount;
 
@@ -48,6 +57,10 @@ public class FlightRecord extends BaseEntity {
     @Basic
     @Temporal(TemporalType.TIMESTAMP)
     private Date arrivalDate;
+
+
+    @Column(name = "unit_price")
+    private double unitPrice;
 
 
     public UUID getId() {
@@ -114,6 +127,23 @@ public class FlightRecord extends BaseEntity {
         this.arrivalDate = arrivalDate;
     }
 
+    public double getUnitPrice() {
+        return unitPrice;
+    }
+
+    public void setUnitPrice(double unitPrice) {
+        this.unitPrice = unitPrice;
+    }
+
+    public List<FlightTicket> getFlightTickets() {
+        return flightTickets;
+    }
+
+    public void setFlightTickets(List<FlightTicket> flightTickets) {
+        this.flightTickets = flightTickets;
+    }
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -121,14 +151,17 @@ public class FlightRecord extends BaseEntity {
         FlightRecord that = (FlightRecord) o;
         return fligtSeatCount == that.fligtSeatCount &&
                 availableSeatCount == that.availableSeatCount &&
+                Double.compare(that.unitPrice, unitPrice) == 0 &&
                 Objects.equals(id, that.id) &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(airlinesCompany, that.airlinesCompany) &&
-                Objects.equals(route, that.route);
+                Objects.equals(route, that.route) &&
+                Objects.equals(departureDate.getTime(), that.departureDate.getTime()) &&
+                Objects.equals(arrivalDate.getTime(), that.arrivalDate.getTime());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, airlinesCompany, route, fligtSeatCount, availableSeatCount, departureDate, arrivalDate);
+        return Objects.hash(id, name, airlinesCompany, route, flightTickets, fligtSeatCount, availableSeatCount, departureDate, arrivalDate, unitPrice);
     }
 }
