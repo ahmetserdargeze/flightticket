@@ -15,5 +15,7 @@ public interface FlightRecordDao {
 
     List<FlightRecord> searchFlightRecordWithAirlinesCompanyAndRouteAndDepertureDateAndArrivalDate(FlightRecord flightRecord);
 
+    List<FlightRecord> listAllFlightRecord();
+
 
 }

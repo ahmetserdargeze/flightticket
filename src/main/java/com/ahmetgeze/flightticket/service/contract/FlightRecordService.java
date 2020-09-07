@@ -10,5 +10,6 @@ import java.util.UUID;
 public interface FlightRecordService {
     SaveResponse createFlightRecord(String flightRecordName, UUID airlinesCompanyId, UUID routeId, int flightSeatCout, Date departureDate, Date arrivalDate);
     SearchResponse searchFlightRecord(UUID airlinesCompanyId,UUID routeId,Date depertureDate);
+    SearchResponse listAllFlightRecord();
 
 }

@@ -85,4 +85,10 @@ public class FlightRecordServiceImpl implements FlightRecordService {
             throw (new GeneralException(ExceptionCategory.SERVİCE_EXCEPTİON, ExceptionCode.NULL_INPUT_ERR, new NullPointerException()));
         }
     }
+
+    @Override
+    public SearchResponse listAllFlightRecord() {
+            List<FlightRecord> flightRecords = flightRecordDao.listAllFlightRecord();
+            return new SearchResponse(HttpStatus.OK, !flightRecords.isEmpty() ? "List Flight Record with Succes" : "Listed Flight Record  with Succes but Resultset is empty", true, flightRecords);
+    }
 }

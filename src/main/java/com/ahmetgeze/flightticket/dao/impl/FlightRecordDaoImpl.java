@@ -48,8 +48,17 @@ public class FlightRecordDaoImpl implements FlightRecordDao {
                     flightRecord.getRoute().getId(),
                     flightRecord.getDepartureDate(),
                     depertureEndDate);
-        }catch (Exception e){
+        } catch (Exception e) {
             throw (new GeneralException(ExceptionCategory.DB_EXEPTİON, ExceptionCode.FLIGHT_RECORD_SEARCH_ERR_1, e));
+        }
+    }
+
+    @Override
+    public List<FlightRecord> listAllFlightRecord() {
+        try {
+            return flightRecordRepository.findAll();
+        } catch (Exception e) {
+            throw (new GeneralException(ExceptionCategory.DB_EXEPTİON, ExceptionCode.FLIGHT_RECORD_SEARCH_ERR_2, e));
         }
     }
 }
