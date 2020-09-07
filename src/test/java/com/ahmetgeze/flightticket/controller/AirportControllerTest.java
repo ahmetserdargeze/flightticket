@@ -1,15 +1,9 @@
 package com.ahmetgeze.flightticket.controller;
 
-import com.ahmetgeze.flightticket.entity.AirlinesCompany;
 import com.ahmetgeze.flightticket.entity.Airport;
-import com.ahmetgeze.flightticket.entity.FlightRecord;
-import com.ahmetgeze.flightticket.entity.Route;
 import com.ahmetgeze.flightticket.model.response.SaveResponse;
 import com.ahmetgeze.flightticket.model.response.SearchResponse;
-import com.ahmetgeze.flightticket.repository.AirlinesCompanyRepository;
 import com.ahmetgeze.flightticket.repository.AirportRepository;
-import com.ahmetgeze.flightticket.repository.FlightRecordRepository;
-import com.ahmetgeze.flightticket.repository.RouteRepository;
 import com.ahmetgeze.flightticket.utils.UtilsFunc;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -24,11 +18,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;

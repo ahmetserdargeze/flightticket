@@ -8,6 +8,7 @@ import com.ahmetgeze.flightticket.model.response.SearchResponse;
 import com.ahmetgeze.flightticket.repository.AirportRepository;
 import com.ahmetgeze.flightticket.service.contract.AirportService;
 import org.junit.Before;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -33,6 +34,11 @@ public class AirportServiceImplTest {
 
     @BeforeEach
     void deletAllRecord() {
+        airportRepository.deleteAll();
+    }
+
+    @AfterEach
+    void delete() {
         airportRepository.deleteAll();
     }
     String airportName1 = "ATATURK HAVALİMANI";
