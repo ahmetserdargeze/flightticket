@@ -34,6 +34,9 @@ public class FlightRecord extends BaseEntity {
     @Column(name = "flight_seat_count", nullable = false)
     private int fligtSeatCount;
 
+    @Column(name = "available_seat_count", nullable = false)
+    private int availableSeatCount;
+
 
     @Column(name = "departure_date")
     @Basic
@@ -87,6 +90,14 @@ public class FlightRecord extends BaseEntity {
         this.fligtSeatCount = fligtSeatCount;
     }
 
+    public int getAvailableSeatCount() {
+        return availableSeatCount;
+    }
+
+    public void setAvailableSeatCount(int availableSeatCount) {
+        this.availableSeatCount = availableSeatCount;
+    }
+
     public Date getDepartureDate() {
         return departureDate;
     }
@@ -109,6 +120,7 @@ public class FlightRecord extends BaseEntity {
         if (o == null || getClass() != o.getClass()) return false;
         FlightRecord that = (FlightRecord) o;
         return fligtSeatCount == that.fligtSeatCount &&
+                availableSeatCount == that.availableSeatCount &&
                 Objects.equals(id, that.id) &&
                 Objects.equals(name, that.name) &&
                 Objects.equals(airlinesCompany, that.airlinesCompany) &&
@@ -119,6 +131,6 @@ public class FlightRecord extends BaseEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, airlinesCompany, route, fligtSeatCount, departureDate, arrivalDate);
+        return Objects.hash(id, name, airlinesCompany, route, fligtSeatCount, availableSeatCount, departureDate, arrivalDate);
     }
 }
