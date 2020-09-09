@@ -2,6 +2,7 @@ package com.ahmetgeze.flightticket.dao.impl;
 
 import com.ahmetgeze.flightticket.dao.contract.FlightRecordDao;
 import com.ahmetgeze.flightticket.entity.FlightRecord;
+import com.ahmetgeze.flightticket.entity.FlightTicket;
 import com.ahmetgeze.flightticket.model.exception.ExceptionCategory;
 import com.ahmetgeze.flightticket.model.exception.ExceptionCode;
 import com.ahmetgeze.flightticket.model.exception.GeneralException;
@@ -61,4 +62,6 @@ public class FlightRecordDaoImpl implements FlightRecordDao {
             throw (new GeneralException(ExceptionCategory.DB_EXEPTİON, ExceptionCode.FLIGHT_RECORD_SEARCH_ERR_2, e));
         }
     }
+
+
 }

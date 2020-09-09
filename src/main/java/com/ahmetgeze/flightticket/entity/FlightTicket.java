@@ -1,23 +1,28 @@
 package com.ahmetgeze.flightticket.entity;
 
+
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
+import java.io.Serializable;
 import java.util.Date;
 import java.util.Objects;
 import java.util.UUID;
 
 @Entity
 @Table(name = "flight_ticket")
-public class FlightTicket extends BaseEntity {
+
+public class FlightTicket extends BaseEntity implements Serializable {
     @Id
     @GeneratedValue
     private UUID id;
 
-    @OneToOne(fetch = FetchType.EAGER, optional = false)
-    @JoinColumn(name = "sell_record_fk", referencedColumnName = "id")
+    @ManyToOne(fetch = FetchType.EAGER,optional = false)
+    @JoinColumn(name = "sell_record_fk",referencedColumnName = "id",nullable = false)
     @OnDelete(action = OnDeleteAction.CASCADE)
+    @JsonIgnoreProperties( allowSetters=true,value = "flightTickets")
     private SellRecord sellRecord;
 
 
@@ -31,11 +36,11 @@ public class FlightTicket extends BaseEntity {
     @Temporal(TemporalType.TIMESTAMP)
     private Date selledDate;
 
-    @Column(name = "seat_number", nullable = false)
-    private int seatNumber;
-
     @Column(name = "is_active", nullable = false)
-    private boolean isActive = true;
+    private boolean active = true;
+
+    @Column(nullable = false)
+    private double price;
 
     public UUID getId() {
         return id;
@@ -53,20 +58,12 @@ public class FlightTicket extends BaseEntity {
         this.selledDate = selledDate;
     }
 
-    public int getSeatNumber() {
-        return seatNumber;
-    }
-
-    public void setSeatNumber(int seatNumber) {
-        this.seatNumber = seatNumber;
-    }
-
     public boolean isActive() {
-        return isActive;
+        return active;
     }
 
     public void setActive(boolean active) {
-        isActive = active;
+        this.active = active;
     }
 
     public SellRecord getSellRecord() {
@@ -85,21 +82,40 @@ public class FlightTicket extends BaseEntity {
         this.flightRecord = flightRecord;
     }
 
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         FlightTicket that = (FlightTicket) o;
-        return seatNumber == that.seatNumber &&
-                isActive == that.isActive &&
+        return active == that.active &&
                 Objects.equals(id, that.id) &&
-                Objects.equals(sellRecord, that.sellRecord) &&
                 Objects.equals(flightRecord, that.flightRecord) &&
                 Objects.equals(selledDate.getTime(), that.selledDate.getTime());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, sellRecord, flightRecord, selledDate, seatNumber, isActive);
+        return Objects.hash(id, selledDate, active);
+    }
+
+    @Override
+    public String toString() {
+        return "FlightTicket{" +
+                "id=" + id +
+                ", flightRecord=" + flightRecord +
+                ", selledDate=" + selledDate +
+                ", active=" + active +
+                ", price=" + price +
+                '}';
     }
 }

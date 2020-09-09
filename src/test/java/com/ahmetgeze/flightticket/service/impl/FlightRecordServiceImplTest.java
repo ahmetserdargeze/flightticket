@@ -111,7 +111,6 @@ public class FlightRecordServiceImplTest {
         flightRecord1.setRoute(route1);
         flightRecord1.setArrivalDate(arrivalDate);
         flightRecord1.setDepartureDate(departureDate);
-        flightRecord1.setAvailableSeatCount(flightRecordSeatCount);
         flightRecord1.setFligtSeatCount(flightRecordSeatCount);
         flightRecord1 = flightRecordRepository.save(flightRecord1);
 
@@ -130,7 +129,6 @@ public class FlightRecordServiceImplTest {
         flightRecord2.setRoute(route1);
         flightRecord2.setArrivalDate(arrivalDate);
         flightRecord2.setDepartureDate(departureDate);
-        flightRecord2.setAvailableSeatCount(flightRecordSeatCount);
         flightRecord2.setFligtSeatCount(flightRecordSeatCount);
         flightRecord2 = flightRecordRepository.save(flightRecord2);
 
@@ -150,7 +148,6 @@ public class FlightRecordServiceImplTest {
         flightRecord3.setRoute(route1);
         flightRecord3.setArrivalDate(arrivalDate);
         flightRecord3.setDepartureDate(departureDate);
-        flightRecord3.setAvailableSeatCount(flightRecordSeatCount);
         flightRecord3.setFligtSeatCount(flightRecordSeatCount);
         flightRecord3 = flightRecordRepository.save(flightRecord3);
     }

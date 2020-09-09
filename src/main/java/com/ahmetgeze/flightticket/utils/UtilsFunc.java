@@ -39,4 +39,10 @@ public class UtilsFunc {
         }
     }
 
+    public static String maskingCreditCardNumber(String string) {
+        string = string.replaceAll("-", "");
+        string = string.replaceAll(",", "");
+        return string.replaceAll("\\b([0-9]{6})[0-9]{6}([0-9]{4})\\b", "$1******$2");
+    }
+
 }

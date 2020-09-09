@@ -33,18 +33,13 @@ public class FlightRecord extends BaseEntity {
     private Route route;
 
 
-    @OneToMany(cascade = CascadeType.ALL,
-            mappedBy = "flightRecord")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "flightRecord")
     @JsonIgnore
-    @Column(nullable = true)
     private List<FlightTicket> flightTickets;
 
 
     @Column(name = "flight_seat_count", nullable = false)
     private int fligtSeatCount;
-
-    @Column(name = "available_seat_count", nullable = false)
-    private int availableSeatCount;
 
 
     @Column(name = "departure_date")
@@ -103,13 +98,7 @@ public class FlightRecord extends BaseEntity {
         this.fligtSeatCount = fligtSeatCount;
     }
 
-    public int getAvailableSeatCount() {
-        return availableSeatCount;
-    }
 
-    public void setAvailableSeatCount(int availableSeatCount) {
-        this.availableSeatCount = availableSeatCount;
-    }
 
     public Date getDepartureDate() {
         return departureDate;
@@ -143,6 +132,10 @@ public class FlightRecord extends BaseEntity {
         this.flightTickets = flightTickets;
     }
 
+    public int calculatePercentageIndicator() {
+        return (this.fligtSeatCount*10)/100;
+    }
+
 
     @Override
     public boolean equals(Object o) {
@@ -150,7 +143,6 @@ public class FlightRecord extends BaseEntity {
         if (o == null || getClass() != o.getClass()) return false;
         FlightRecord that = (FlightRecord) o;
         return fligtSeatCount == that.fligtSeatCount &&
-                availableSeatCount == that.availableSeatCount &&
                 Double.compare(that.unitPrice, unitPrice) == 0 &&
                 Objects.equals(id, that.id) &&
                 Objects.equals(name, that.name) &&
@@ -162,6 +154,18 @@ public class FlightRecord extends BaseEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, name, airlinesCompany, route, flightTickets, fligtSeatCount, availableSeatCount, departureDate, arrivalDate, unitPrice);
+        return Objects.hash(id, name, airlinesCompany, route, flightTickets, fligtSeatCount, departureDate, arrivalDate, unitPrice);
+    }
+
+    @Override
+    public String toString() {
+        return "FlightRecord{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", fligtSeatCount=" + fligtSeatCount +
+                ", departureDate=" + departureDate +
+                ", arrivalDate=" + arrivalDate +
+                ", unitPrice=" + unitPrice +
+                '}';
     }
 }

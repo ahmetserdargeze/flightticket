@@ -45,7 +45,6 @@ public class FlightRecordServiceImpl implements FlightRecordService {
                     flightRecord.setAirlinesCompany(airlinesCompany);
                     flightRecord.setRoute(route);
                     flightRecord.setFligtSeatCount(flightSeatCout);
-                    flightRecord.setAvailableSeatCount(flightSeatCout);
                     flightRecord.setDepartureDate(departureDate);
                     flightRecord.setArrivalDate(arrivalDate);
                     flightRecord = flightRecordDao.saveFlightRecord(flightRecord);

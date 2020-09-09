@@ -32,8 +32,7 @@ import java.util.TimeZone;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class FlightRecordControllerTest {
@@ -108,21 +107,19 @@ public class FlightRecordControllerTest {
 
         flightRecord1.setAirlinesCompany(airlinesCompany);
         flightRecord1.setRoute(route1);
-        flightRecord1.setAvailableSeatCount(200);
         flightRecord1.setDepartureDate(new Date());
+        flightRecord1.setFligtSeatCount(flightRecordSeatCount);
         flightRecord1.setArrivalDate(new Date());
         flightRecord1.setName(flighRecordName2);
-        flightRecord1.setAvailableSeatCount(200);
         flightRecordRepository.save(flightRecord1);
 
         flightRecord2 = new FlightRecord();
         flightRecord2.setAirlinesCompany(airlinesCompany);
         flightRecord2.setRoute(route1);
-        flightRecord2.setAvailableSeatCount(200);
+        flightRecord2.setFligtSeatCount(flightRecordSeatCount);
         flightRecord2.setDepartureDate(new Date());
         flightRecord2.setArrivalDate(new Date());
         flightRecord2.setName(flighRecordName3);
-        flightRecord2.setAvailableSeatCount(200);
         flightRecordRepository.save(flightRecord2);
 
     }
@@ -188,14 +185,14 @@ public class FlightRecordControllerTest {
                 SearchResponse.class,
                 airlinesCompany.getId(),
                 route1.getId(),
-                "07-09-2020"
+                "08-09-2020"
         );
         List<FlightRecord> resultList = gson.fromJson(gson.toJson(responseEntity.getBody().getSearchResult()),
                 new TypeToken<List<FlightRecord>>() {}.getType());
 
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
-        assertNotNull(resultList.size() == 2);
+        assertTrue(resultList.size() == 2);
         assertThat(resultList, containsInAnyOrder(flightRecord1,flightRecord2));
     }
 

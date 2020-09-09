@@ -1,29 +1,35 @@
 package com.ahmetgeze.flightticket.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import javax.persistence.*;
 import javax.validation.constraints.Size;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
 
 @Entity
 @Table(name = "sell_record")
-public class SellRecord extends BaseEntity {
+public class SellRecord extends BaseEntity implements Serializable {
     @Id
     @GeneratedValue
     private UUID id;
 
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "sellRecord")
-    @JsonIgnore
-    private FlightTicket flightTicket;
+    @OneToMany(cascade = CascadeType.ALL,mappedBy = "sellRecord")
+    @JsonIgnoreProperties( allowSetters=true,value = "sellRecord")
+    private List<FlightTicket> flightTickets = new ArrayList<>();
 
-    @Column(nullable = false)
-    private Double price;
+    @Column(name = "total_price", nullable = false)
+    private double totalPrice;
 
-    @Column(nullable = false, name = "increase_percentage")
-    private Double increasePercentage;
+    @Column(name = "card_place_holder", nullable = false)
+    private String cardPlaceHolder;
 
     @Size(max = 16, min = 16)
     @Column(name = "card_number", nullable = false)
@@ -45,28 +51,28 @@ public class SellRecord extends BaseEntity {
         this.id = id;
     }
 
-    public FlightTicket getFlightTicket() {
-        return flightTicket;
+    public List<FlightTicket> getFlightTickets() {
+        return flightTickets;
     }
 
-    public void setFlightTicket(FlightTicket flightTicket) {
-        this.flightTicket = flightTicket;
+    public void setFlightTickets(List<FlightTicket> flightTickets) {
+        this.flightTickets = flightTickets;
     }
 
-    public Double getPrice() {
-        return price;
+    public double getTotalPrice() {
+        return totalPrice;
     }
 
-    public void setPrice(Double price) {
-        this.price = price;
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
     }
 
-    public Double getIncreasePercentage() {
-        return increasePercentage;
+    public String getCardPlaceHolder() {
+        return cardPlaceHolder;
     }
 
-    public void setIncreasePercentage(Double increasePercentage) {
-        this.increasePercentage = increasePercentage;
+    public void setCardPlaceHolder(String cardPlaceHolder) {
+        this.cardPlaceHolder = cardPlaceHolder;
     }
 
     public String getCardNumber() {
@@ -93,15 +99,19 @@ public class SellRecord extends BaseEntity {
         this.cvvCode = cvvCode;
     }
 
+    public void addItemToFlightTickets(FlightTicket flightTicket) {
+        this.flightTickets.add(flightTicket);
+        this.totalPrice += flightTicket.getPrice();
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         SellRecord that = (SellRecord) o;
         return Objects.equals(id, that.id) &&
-                Objects.equals(flightTicket, that.flightTicket) &&
-                Objects.equals(price, that.price) &&
-                Objects.equals(increasePercentage, that.increasePercentage) &&
+                Objects.equals(totalPrice, that.totalPrice) &&
+                Objects.equals(cardPlaceHolder, that.cardPlaceHolder) &&
                 Objects.equals(cardNumber, that.cardNumber) &&
                 Objects.equals(cardDate, that.cardDate) &&
                 Objects.equals(cvvCode, that.cvvCode);
@@ -109,6 +119,18 @@ public class SellRecord extends BaseEntity {
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, flightTicket, price, increasePercentage, cardNumber, cardDate, cvvCode);
+        return Objects.hash(id, totalPrice, cardPlaceHolder, cardNumber, cardDate, cvvCode);
+    }
+
+    @Override
+    public String toString() {
+        return "SellRecord{" +
+                "id=" + id +
+                ", totalPrice=" + totalPrice +
+                ", cardPlaceHolder='" + cardPlaceHolder + '\'' +
+                ", cardNumber='" + cardNumber + '\'' +
+                ", cardDate='" + cardDate + '\'' +
+                ", cvvCode='" + cvvCode + '\'' +
+                '}';
     }
 }
