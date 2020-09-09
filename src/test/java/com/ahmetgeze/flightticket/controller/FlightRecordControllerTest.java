@@ -23,12 +23,10 @@ import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
+import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.List;
-import java.util.Locale;
-import java.util.TimeZone;
+import java.util.*;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsInAnyOrder;
@@ -181,19 +179,24 @@ public class FlightRecordControllerTest {
         testUrl.append("routeId={routeId}&");
         testUrl.append("departureDate={departureDate}");
 
+        DateFormat fromUser = new SimpleDateFormat("dd-MM-yyyy");
+        Date today = Calendar.getInstance().getTime();
+        String reformattedStr = fromUser.format(today);
+
         ResponseEntity<SearchResponse> responseEntity = restTemplate.getForEntity(testUrl.toString(),
                 SearchResponse.class,
                 airlinesCompany.getId(),
                 route1.getId(),
-                "08-09-2020"
+                reformattedStr
         );
         List<FlightRecord> resultList = gson.fromJson(gson.toJson(responseEntity.getBody().getSearchResult()),
-                new TypeToken<List<FlightRecord>>() {}.getType());
+                new TypeToken<List<FlightRecord>>() {
+                }.getType());
 
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertTrue(resultList.size() == 2);
-        assertThat(resultList, containsInAnyOrder(flightRecord1,flightRecord2));
+        assertThat(resultList, containsInAnyOrder(flightRecord1, flightRecord2));
     }
 
 
@@ -209,11 +212,12 @@ public class FlightRecordControllerTest {
         ResponseEntity<SearchResponse> responseEntity = restTemplate.getForEntity(testUrl.toString(),
                 SearchResponse.class);
         List<FlightRecord> resultList = gson.fromJson(gson.toJson(responseEntity.getBody().getSearchResult()),
-                new TypeToken<List<FlightRecord>>() {}.getType());
+                new TypeToken<List<FlightRecord>>() {
+                }.getType());
 
         assertEquals(HttpStatus.OK, responseEntity.getStatusCode());
         assertNotNull(resultList.size() == 2);
-        assertThat(resultList, containsInAnyOrder(flightRecord1,flightRecord2));
+        assertThat(resultList, containsInAnyOrder(flightRecord1, flightRecord2));
     }
 
 }
