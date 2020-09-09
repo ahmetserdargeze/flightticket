@@ -28,9 +28,10 @@ public class FlightRecordController {
                                                     @RequestParam UUID airlinesCompanyId,
                                                     @RequestParam UUID routeId,
                                                     @RequestParam int flightSeatCout,
+                                                    @RequestParam double unitPrice,
                                                     @RequestParam @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss") Date departureDate,
                                                     @RequestParam @DateTimeFormat(pattern = "dd-MM-yyyy HH:mm:ss") Date arrivalDate) {
-        return new ResponseEntity<SaveResponse>(flightRecordService.createFlightRecord(flightRecordName, airlinesCompanyId, routeId, flightSeatCout, departureDate, arrivalDate), HttpStatus.OK);
+        return new ResponseEntity<SaveResponse>(flightRecordService.createFlightRecord(flightRecordName, airlinesCompanyId, routeId, flightSeatCout,unitPrice, departureDate, arrivalDate), HttpStatus.OK);
     }
 
     @GetMapping("/search")

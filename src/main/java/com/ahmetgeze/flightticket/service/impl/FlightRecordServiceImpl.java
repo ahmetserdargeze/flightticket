@@ -34,8 +34,8 @@ public class FlightRecordServiceImpl implements FlightRecordService {
 
 
     @Override
-    public SaveResponse createFlightRecord(String flightRecordName, UUID airlinesCompanyId, UUID routeId, int flightSeatCout, Date departureDate, Date arrivalDate) {
-        if (UtilsFunc.isNotNull(flightRecordName, airlinesCompanyId, routeId, flightSeatCout, departureDate, arrivalDate)) {
+    public SaveResponse createFlightRecord(String flightRecordName, UUID airlinesCompanyId, UUID routeId, int flightSeatCout,double unitPrice, Date departureDate, Date arrivalDate) {
+        if (UtilsFunc.isNotNull(flightRecordName, airlinesCompanyId, routeId, flightSeatCout,unitPrice, departureDate, arrivalDate)) {
             if (arrivalDate.getTime() > departureDate.getTime()) {
                 if (flightSeatCout > 0) {
                     Route route = routeDao.getById(routeId);
@@ -47,6 +47,7 @@ public class FlightRecordServiceImpl implements FlightRecordService {
                     flightRecord.setFligtSeatCount(flightSeatCout);
                     flightRecord.setDepartureDate(departureDate);
                     flightRecord.setArrivalDate(arrivalDate);
+                    flightRecord.setUnitPrice(unitPrice);
                     flightRecord = flightRecordDao.saveFlightRecord(flightRecord);
                     return new SaveResponse(HttpStatus.OK, "Save New Flight Record with Succes", true, flightRecord);
 

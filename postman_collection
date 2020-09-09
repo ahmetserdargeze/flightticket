@@ -1,0 +1,1218 @@
+{
+	"info": {
+		"_postman_id": "3eb51fbc-7a36-411d-8b75-b196ce321cd1",
+		"name": "finartz",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "airports create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "Test deneme",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/airports/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"airports",
+						"create"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "airports create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "Test",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/airports/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airports",
+								"create"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 09 Sep 2020 00:37:30 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"message\": \"Save New Airport with Succes\",\n    \"success\": true,\n    \"insertedObject\": {\n        \"createDate\": \"2020-09-09T00:37:30.468+00:00\",\n        \"updateDate\": null,\n        \"id\": \"8400614c-cfc9-4b10-b0af-a3ea91ffda53\",\n        \"name\": \"TEST\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "airports search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "name",
+							"value": "tes",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/airports/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"airports",
+						"search"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "airports search",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "name",
+									"value": "tes",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/airports/search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airports",
+								"search"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 09 Sep 2020 00:38:34 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"message\": \"Get Airports with Succes\",\n    \"success\": true,\n    \"searchResult\": [\n        {\n            \"createDate\": \"2020-09-09T00:37:30.468+00:00\",\n            \"updateDate\": null,\n            \"id\": \"8400614c-cfc9-4b10-b0af-a3ea91ffda53\",\n            \"name\": \"TEST\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "airports-list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/airports/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"airports",
+						"list"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "airports-list",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/airports/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airports",
+								"list"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 09 Sep 2020 00:39:36 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"message\": \"List Airports  with Succes\",\n    \"success\": true,\n    \"searchResult\": [\n        {\n            \"createDate\": \"2020-09-09T00:37:30.468+00:00\",\n            \"updateDate\": null,\n            \"id\": \"8400614c-cfc9-4b10-b0af-a3ea91ffda53\",\n            \"name\": \"TEST\"\n        },\n        {\n            \"createDate\": \"2020-09-09T00:39:28.102+00:00\",\n            \"updateDate\": null,\n            \"id\": \"84add8b2-bdc8-427f-8aa8-315088c3e6c8\",\n            \"name\": \"TEST DENEME\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "route create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "departureId",
+							"value": "8400614c-cfc9-4b10-b0af-a3ea91ffda53",
+							"type": "text"
+						},
+						{
+							"key": "arrivalId",
+							"value": "84add8b2-bdc8-427f-8aa8-315088c3e6c8",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/route/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"route",
+						"create"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "route create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "departureId",
+									"value": "8400614c-cfc9-4b10-b0af-a3ea91ffda53",
+									"type": "text"
+								},
+								{
+									"key": "arrivalId",
+									"value": "84add8b2-bdc8-427f-8aa8-315088c3e6c8",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/route/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"route",
+								"create"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 09 Sep 2020 00:41:53 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"message\": \"Save New Route with Succes\",\n    \"success\": true,\n    \"insertedObject\": {\n        \"createDate\": \"2020-09-09T00:41:53.660+00:00\",\n        \"updateDate\": null,\n        \"id\": \"8c13dc95-c6d1-4ca7-958a-88b19382da81\",\n        \"departureAirport\": {\n            \"createDate\": \"2020-09-09T00:37:30.468+00:00\",\n            \"updateDate\": null,\n            \"id\": \"8400614c-cfc9-4b10-b0af-a3ea91ffda53\",\n            \"name\": \"TEST\"\n        },\n        \"arrivalAirport\": {\n            \"createDate\": \"2020-09-09T00:39:28.102+00:00\",\n            \"updateDate\": null,\n            \"id\": \"84add8b2-bdc8-427f-8aa8-315088c3e6c8\",\n            \"name\": \"TEST DENEME\"\n        }\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "route-search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "departureName",
+							"value": "tes",
+							"type": "text"
+						},
+						{
+							"key": "arrivalName",
+							"value": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/route/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"route",
+						"search"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "route-search",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "departureName",
+									"value": "tes",
+									"type": "text"
+								},
+								{
+									"key": "arrivalName",
+									"value": "",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/route/search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"route",
+								"search"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 09 Sep 2020 00:43:19 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"message\": \"Searched Arrival Route with Succes\",\n    \"success\": true,\n    \"searchResult\": [\n        {\n            \"createDate\": \"2020-09-09T00:41:53.660+00:00\",\n            \"updateDate\": null,\n            \"id\": \"8c13dc95-c6d1-4ca7-958a-88b19382da81\",\n            \"departureAirport\": {\n                \"createDate\": \"2020-09-09T00:37:30.468+00:00\",\n                \"updateDate\": null,\n                \"id\": \"8400614c-cfc9-4b10-b0af-a3ea91ffda53\",\n                \"name\": \"TEST\"\n            },\n            \"arrivalAirport\": {\n                \"createDate\": \"2020-09-09T00:39:28.102+00:00\",\n                \"updateDate\": null,\n                \"id\": \"84add8b2-bdc8-427f-8aa8-315088c3e6c8\",\n                \"name\": \"TEST DENEME\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "route-filter",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "departureId",
+							"value": "",
+							"type": "text"
+						},
+						{
+							"key": "arrivalId",
+							"value": "84add8b2-bdc8-427f-8aa8-315088c3e6c8",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/route/filter",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"route",
+						"filter"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "route-filter",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "departureId",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "arrivalId",
+									"value": "84add8b2-bdc8-427f-8aa8-315088c3e6c8",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/route/filter",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"route",
+								"filter"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 09 Sep 2020 00:45:13 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"message\": \"Filtered Arrival Route with Succes\",\n    \"success\": true,\n    \"searchResult\": [\n        {\n            \"createDate\": \"2020-09-09T00:41:53.660+00:00\",\n            \"updateDate\": null,\n            \"id\": \"8c13dc95-c6d1-4ca7-958a-88b19382da81\",\n            \"departureAirport\": {\n                \"createDate\": \"2020-09-09T00:37:30.468+00:00\",\n                \"updateDate\": null,\n                \"id\": \"8400614c-cfc9-4b10-b0af-a3ea91ffda53\",\n                \"name\": \"TEST\"\n            },\n            \"arrivalAirport\": {\n                \"createDate\": \"2020-09-09T00:39:28.102+00:00\",\n                \"updateDate\": null,\n                \"id\": \"84add8b2-bdc8-427f-8aa8-315088c3e6c8\",\n                \"name\": \"TEST DENEME\"\n            }\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "airlinesCompany create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "airlinesCompanyName",
+							"value": "TURK HAVA YOLLARI",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/airlinesCompany/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"airlinesCompany",
+						"create"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "airlinesCompany create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "airlinesCompanyName",
+									"value": "TURK HAVA YOLLARI",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/airlinesCompany/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airlinesCompany",
+								"create"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 09 Sep 2020 00:47:01 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"message\": \"Save New Airlines Company with Succes\",\n    \"success\": true,\n    \"insertedObject\": {\n        \"createDate\": \"2020-09-09T00:47:01.140+00:00\",\n        \"updateDate\": null,\n        \"id\": \"fef3bba1-9319-4e11-b953-d02b967cb440\",\n        \"name\": \"TURK HAVA YOLLARI\"\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "airlinesCompany search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "airlinesCompanyName",
+							"value": "hava",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/airlinesCompany/searchWithName",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"airlinesCompany",
+						"searchWithName"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "airlinesCompany search",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "airlinesCompanyName",
+									"value": "hava",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/airlinesCompany/searchWithName",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"airlinesCompany",
+								"searchWithName"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 09 Sep 2020 00:47:51 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"message\": \"Get Airlines Company with Succes\",\n    \"success\": true,\n    \"searchResult\": [\n        {\n            \"createDate\": \"2020-09-09T00:47:01.140+00:00\",\n            \"updateDate\": null,\n            \"id\": \"fef3bba1-9319-4e11-b953-d02b967cb440\",\n            \"name\": \"TURK HAVA YOLLARI\"\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "flightRecord create",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "flightRecordName",
+							"value": "tk12345",
+							"type": "text"
+						},
+						{
+							"key": "airlinesCompanyId",
+							"value": "a0afba90-a527-47bd-a2eb-f54777ce4917",
+							"type": "text"
+						},
+						{
+							"key": "routeId",
+							"value": "5d90e85a-356c-43eb-81ac-587e8a902f23",
+							"type": "text"
+						},
+						{
+							"key": "flightSeatCout",
+							"value": "100",
+							"type": "text"
+						},
+						{
+							"key": "departureDate",
+							"value": "24-12-2016 12:56:00",
+							"type": "text"
+						},
+						{
+							"key": "arrivalDate",
+							"value": "24-12-2016 15:56:00",
+							"type": "text"
+						},
+						{
+							"key": "unitPrice",
+							"value": "100",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/flightRecord/create",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flightRecord",
+						"create"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "flightRecord create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "flightRecordName",
+									"value": "tk12345",
+									"type": "text"
+								},
+								{
+									"key": "airlinesCompanyId",
+									"value": "a0afba90-a527-47bd-a2eb-f54777ce4917",
+									"type": "text"
+								},
+								{
+									"key": "routeId",
+									"value": "5d90e85a-356c-43eb-81ac-587e8a902f23",
+									"type": "text"
+								},
+								{
+									"key": "flightSeatCout",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "departureDate",
+									"value": "24-12-2016 12:56:00",
+									"type": "text"
+								},
+								{
+									"key": "arrivalDate",
+									"value": "24-12-2016 15:56:00",
+									"type": "text"
+								},
+								{
+									"key": "unitPrice",
+									"value": "100",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/flightRecord/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flightRecord",
+								"create"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 09 Sep 2020 00:57:24 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"message\": \"Save New Flight Record with Succes\",\n    \"success\": true,\n    \"insertedObject\": {\n        \"createDate\": \"2020-09-09T00:57:24.575+00:00\",\n        \"updateDate\": null,\n        \"id\": \"bf4ebd2d-4811-4932-9b54-0790ecd44d86\",\n        \"name\": \"TK12345\",\n        \"airlinesCompany\": {\n            \"createDate\": \"2020-09-09T00:56:01.321+00:00\",\n            \"updateDate\": null,\n            \"id\": \"a0afba90-a527-47bd-a2eb-f54777ce4917\",\n            \"name\": \"TURK HAVA YOLLARI\"\n        },\n        \"route\": {\n            \"createDate\": \"2020-09-09T00:55:50.363+00:00\",\n            \"updateDate\": null,\n            \"id\": \"5d90e85a-356c-43eb-81ac-587e8a902f23\",\n            \"departureAirport\": {\n                \"createDate\": \"2020-09-09T00:55:09.520+00:00\",\n                \"updateDate\": null,\n                \"id\": \"fabdc3b1-9b99-4784-8be8-2a9614cb1d17\",\n                \"name\": \"TEST DENEME\"\n            },\n            \"arrivalAirport\": {\n                \"createDate\": \"2020-09-09T00:55:39.151+00:00\",\n                \"updateDate\": null,\n                \"id\": \"beb5367a-b639-4c60-ab27-4a9617f2f87f\",\n                \"name\": \"TEST DENEME2\"\n            }\n        },\n        \"fligtSeatCount\": 100,\n        \"departureDate\": \"2016-12-24T09:56:00.000+00:00\",\n        \"arrivalDate\": \"2016-12-24T12:56:00.000+00:00\",\n        \"unitPrice\": 100\n    }\n}"
+				},
+				{
+					"name": "flightRecord create",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "flightRecordName",
+									"value": "tk12345",
+									"type": "text"
+								},
+								{
+									"key": "airlinesCompanyId",
+									"value": "fef3bba1-9319-4e11-b953-d02b967cb440",
+									"type": "text"
+								},
+								{
+									"key": "routeId",
+									"value": "8c13dc95-c6d1-4ca7-958a-88b19382da81",
+									"type": "text"
+								},
+								{
+									"key": "flightSeatCout",
+									"value": "100",
+									"type": "text"
+								},
+								{
+									"key": "departureDate",
+									"value": "24-12-2016 12:56:00",
+									"type": "text"
+								},
+								{
+									"key": "arrivalDate",
+									"value": "24-12-2016 15:56:00",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/flightRecord/create",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flightRecord",
+								"create"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 09 Sep 2020 00:51:38 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"message\": \"Save New Flight Record with Succes\",\n    \"success\": true,\n    \"insertedObject\": {\n        \"createDate\": \"2020-09-09T00:51:38.683+00:00\",\n        \"updateDate\": null,\n        \"id\": \"54d25e5b-9e28-4fe3-8430-7931e8a7816b\",\n        \"name\": \"TK12345\",\n        \"airlinesCompany\": {\n            \"createDate\": \"2020-09-09T00:47:01.140+00:00\",\n            \"updateDate\": null,\n            \"id\": \"fef3bba1-9319-4e11-b953-d02b967cb440\",\n            \"name\": \"TURK HAVA YOLLARI\"\n        },\n        \"route\": {\n            \"createDate\": \"2020-09-09T00:41:53.660+00:00\",\n            \"updateDate\": null,\n            \"id\": \"8c13dc95-c6d1-4ca7-958a-88b19382da81\",\n            \"departureAirport\": {\n                \"createDate\": \"2020-09-09T00:37:30.468+00:00\",\n                \"updateDate\": null,\n                \"id\": \"8400614c-cfc9-4b10-b0af-a3ea91ffda53\",\n                \"name\": \"TEST\"\n            },\n            \"arrivalAirport\": {\n                \"createDate\": \"2020-09-09T00:39:28.102+00:00\",\n                \"updateDate\": null,\n                \"id\": \"84add8b2-bdc8-427f-8aa8-315088c3e6c8\",\n                \"name\": \"TEST DENEME\"\n            }\n        },\n        \"fligtSeatCount\": 100,\n        \"departureDate\": \"2016-12-24T09:56:00.000+00:00\",\n        \"arrivalDate\": \"2016-12-24T12:56:00.000+00:00\",\n        \"unitPrice\": 100\n    }\n}"
+				}
+			]
+		},
+		{
+			"name": "flightRecord-search",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "airlinesCompanyId",
+							"value": "a0afba90-a527-47bd-a2eb-f54777ce4917",
+							"type": "text"
+						},
+						{
+							"key": "routeId",
+							"value": "5d90e85a-356c-43eb-81ac-587e8a902f23",
+							"type": "text"
+						},
+						{
+							"key": "departureDate",
+							"value": "24-12-2016",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/flightRecord/search",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flightRecord",
+						"search"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "flightRecord-search",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "airlinesCompanyId",
+									"value": "a0afba90-a527-47bd-a2eb-f54777ce4917",
+									"type": "text"
+								},
+								{
+									"key": "routeId",
+									"value": "5d90e85a-356c-43eb-81ac-587e8a902f23",
+									"type": "text"
+								},
+								{
+									"key": "departureDate",
+									"value": "24-12-2016",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://localhost:8080/flightRecord/search",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flightRecord",
+								"search"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 09 Sep 2020 00:59:22 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"message\": \"Searched Flight Record with Succes\",\n    \"success\": true,\n    \"searchResult\": [\n        {\n            \"createDate\": \"2020-09-09T00:57:24.575+00:00\",\n            \"updateDate\": null,\n            \"id\": \"bf4ebd2d-4811-4932-9b54-0790ecd44d86\",\n            \"name\": \"TK12345\",\n            \"airlinesCompany\": {\n                \"createDate\": \"2020-09-09T00:56:01.321+00:00\",\n                \"updateDate\": null,\n                \"id\": \"a0afba90-a527-47bd-a2eb-f54777ce4917\",\n                \"name\": \"TURK HAVA YOLLARI\"\n            },\n            \"route\": {\n                \"createDate\": \"2020-09-09T00:55:50.363+00:00\",\n                \"updateDate\": null,\n                \"id\": \"5d90e85a-356c-43eb-81ac-587e8a902f23\",\n                \"departureAirport\": {\n                    \"createDate\": \"2020-09-09T00:55:09.520+00:00\",\n                    \"updateDate\": null,\n                    \"id\": \"fabdc3b1-9b99-4784-8be8-2a9614cb1d17\",\n                    \"name\": \"TEST DENEME\"\n                },\n                \"arrivalAirport\": {\n                    \"createDate\": \"2020-09-09T00:55:39.151+00:00\",\n                    \"updateDate\": null,\n                    \"id\": \"beb5367a-b639-4c60-ab27-4a9617f2f87f\",\n                    \"name\": \"TEST DENEME2\"\n                }\n            },\n            \"fligtSeatCount\": 100,\n            \"departureDate\": \"2016-12-24T09:56:00.000+00:00\",\n            \"arrivalDate\": \"2016-12-24T12:56:00.000+00:00\",\n            \"unitPrice\": 100\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "flightRecord list",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/flightRecord/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flightRecord",
+						"list"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "flightRecord list",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/flightRecord/list",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flightRecord",
+								"list"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 09 Sep 2020 01:00:04 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"message\": \"List Flight Record with Succes\",\n    \"success\": true,\n    \"searchResult\": [\n        {\n            \"createDate\": \"2020-09-09T00:57:24.575+00:00\",\n            \"updateDate\": null,\n            \"id\": \"bf4ebd2d-4811-4932-9b54-0790ecd44d86\",\n            \"name\": \"TK12345\",\n            \"airlinesCompany\": {\n                \"createDate\": \"2020-09-09T00:56:01.321+00:00\",\n                \"updateDate\": null,\n                \"id\": \"a0afba90-a527-47bd-a2eb-f54777ce4917\",\n                \"name\": \"TURK HAVA YOLLARI\"\n            },\n            \"route\": {\n                \"createDate\": \"2020-09-09T00:55:50.363+00:00\",\n                \"updateDate\": null,\n                \"id\": \"5d90e85a-356c-43eb-81ac-587e8a902f23\",\n                \"departureAirport\": {\n                    \"createDate\": \"2020-09-09T00:55:09.520+00:00\",\n                    \"updateDate\": null,\n                    \"id\": \"fabdc3b1-9b99-4784-8be8-2a9614cb1d17\",\n                    \"name\": \"TEST DENEME\"\n                },\n                \"arrivalAirport\": {\n                    \"createDate\": \"2020-09-09T00:55:39.151+00:00\",\n                    \"updateDate\": null,\n                    \"id\": \"beb5367a-b639-4c60-ab27-4a9617f2f87f\",\n                    \"name\": \"TEST DENEME2\"\n                }\n            },\n            \"fligtSeatCount\": 100,\n            \"departureDate\": \"2016-12-24T09:56:00.000+00:00\",\n            \"arrivalDate\": \"2016-12-24T12:56:00.000+00:00\",\n            \"unitPrice\": 100\n        }\n    ]\n}"
+				}
+			]
+		},
+		{
+			"name": "flightTicket sell",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\"paymentDetails\":{\r\n\"cardNumber\":\"4221-1611-2233-0005\",\r\n\"cardDate\":\"05/24\",\r\n\"cvvCode\":\"381\",\r\n\"cardPleaceholderName\":\"ahmet serdar geze\"\r\n},\r\n\"flightRecordId\":\"5f589713-6e17-459d-9bde-dea9f84fa58d\",\r\n\"seatCount\":2\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/flightTicket/sell",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"flightTicket",
+						"sell"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "lightTicket sell",
+					"originalRequest": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"paymentDetails\":{\r\n\"cardNumber\":\"4221-1611-2233-0005\",\r\n\"cardDate\":\"05/24\",\r\n\"cvvCode\":\"381\",\r\n\"cardPleaceholderName\":\"ahmet serdar geze\"\r\n},\r\n\"flightRecordId\":\"5f589713-6e17-459d-9bde-dea9f84fa58d\",\r\n\"seatCount\":2\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/flightTicket/sell",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"flightTicket",
+								"sell"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Wed, 09 Sep 2020 01:14:33 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"status\": \"OK\",\n    \"message\": \"Selling operaitons   end   with Succes\",\n    \"success\": true,\n    \"insertLists\": [\n        {\n            \"createDate\": \"2020-09-09T01:14:33.323+00:00\",\n            \"updateDate\": null,\n            \"id\": \"fa22929d-95f8-4508-b2de-f200666748cf\",\n            \"sellRecord\": {\n                \"createDate\": \"2020-09-09T01:14:33.323+00:00\",\n                \"updateDate\": null,\n                \"id\": \"afcbb926-6677-49bc-aed5-ff594e75d6c1\",\n                \"totalPrice\": 200,\n                \"cardPlaceHolder\": \"ahmet serdar geze\",\n                \"cardNumber\": \"422116******0005\",\n                \"cardDate\": \"05/24\",\n                \"cvvCode\": \"381\"\n            },\n            \"flightRecord\": {\n                \"createDate\": \"2020-09-09T01:14:02.167+00:00\",\n                \"updateDate\": null,\n                \"id\": \"5f589713-6e17-459d-9bde-dea9f84fa58d\",\n                \"name\": \"TK12345\",\n                \"airlinesCompany\": {\n                    \"createDate\": \"2020-09-09T01:13:23.556+00:00\",\n                    \"updateDate\": null,\n                    \"id\": \"d72cef07-c7a2-4fef-b83c-fa224c0e899e\",\n                    \"name\": \"TURK HAVA YOLLARI\"\n                },\n                \"route\": {\n                    \"createDate\": \"2020-09-09T01:13:15.473+00:00\",\n                    \"updateDate\": null,\n                    \"id\": \"67fd118d-b0d5-4913-b603-b3e03cd9ff57\",\n                    \"departureAirport\": {\n                        \"createDate\": \"2020-09-09T01:12:43.016+00:00\",\n                        \"updateDate\": null,\n                        \"id\": \"aaaf56c9-4727-4474-9143-92b41d4458ba\",\n                        \"name\": \"TEST \"\n                    },\n                    \"arrivalAirport\": {\n                        \"createDate\": \"2020-09-09T01:12:45.288+00:00\",\n                        \"updateDate\": null,\n                        \"id\": \"ebb8146a-214e-476c-92ab-f2176794c8e7\",\n                        \"name\": \"TEST 1\"\n                    }\n                },\n                \"fligtSeatCount\": 100,\n                \"departureDate\": \"2016-12-24T09:56:00.000+00:00\",\n                \"arrivalDate\": \"2016-12-24T12:56:00.000+00:00\",\n                \"unitPrice\": 100\n            },\n            \"selledDate\": \"2020-09-09T01:14:33.323+00:00\",\n            \"active\": true,\n            \"price\": 100\n        },\n        {\n            \"createDate\": \"2020-09-09T01:14:33.324+00:00\",\n            \"updateDate\": null,\n            \"id\": \"6e19df79-58fb-44e5-b429-ffb95988e6fb\",\n            \"sellRecord\": {\n                \"createDate\": \"2020-09-09T01:14:33.323+00:00\",\n                \"updateDate\": null,\n                \"id\": \"afcbb926-6677-49bc-aed5-ff594e75d6c1\",\n                \"totalPrice\": 200,\n                \"cardPlaceHolder\": \"ahmet serdar geze\",\n                \"cardNumber\": \"422116******0005\",\n                \"cardDate\": \"05/24\",\n                \"cvvCode\": \"381\"\n            },\n            \"flightRecord\": {\n                \"createDate\": \"2020-09-09T01:14:02.167+00:00\",\n                \"updateDate\": null,\n                \"id\": \"5f589713-6e17-459d-9bde-dea9f84fa58d\",\n                \"name\": \"TK12345\",\n                \"airlinesCompany\": {\n                    \"createDate\": \"2020-09-09T01:13:23.556+00:00\",\n                    \"updateDate\": null,\n                    \"id\": \"d72cef07-c7a2-4fef-b83c-fa224c0e899e\",\n                    \"name\": \"TURK HAVA YOLLARI\"\n                },\n                \"route\": {\n                    \"createDate\": \"2020-09-09T01:13:15.473+00:00\",\n                    \"updateDate\": null,\n                    \"id\": \"67fd118d-b0d5-4913-b603-b3e03cd9ff57\",\n                    \"departureAirport\": {\n                        \"createDate\": \"2020-09-09T01:12:43.016+00:00\",\n                        \"updateDate\": null,\n                        \"id\": \"aaaf56c9-4727-4474-9143-92b41d4458ba\",\n                        \"name\": \"TEST \"\n                    },\n                    \"arrivalAirport\": {\n                        \"createDate\": \"2020-09-09T01:12:45.288+00:00\",\n                        \"updateDate\": null,\n                        \"id\": \"ebb8146a-214e-476c-92ab-f2176794c8e7\",\n                        \"name\": \"TEST 1\"\n                    }\n                },\n                \"fligtSeatCount\": 100,\n                \"departureDate\": \"2016-12-24T09:56:00.000+00:00\",\n                \"arrivalDate\": \"2016-12-24T12:56:00.000+00:00\",\n                \"unitPrice\": 100\n            },\n            \"selledDate\": \"2020-09-09T01:14:33.324+00:00\",\n            \"active\": true,\n            \"price\": 100\n        }\n    ]\n}"
+				}
+			]
+		}
+	],
+	"protocolProfileBehavior": {}
+}

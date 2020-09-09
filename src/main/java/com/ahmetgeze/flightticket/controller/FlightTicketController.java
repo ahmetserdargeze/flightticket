@@ -19,8 +19,7 @@ public class FlightTicketController {
     FlightTicketService flightTicketService;
 
     @PostMapping("/sell")
-    @ResponseBody
-    ResponseEntity<MultipleSaveResponse> createFlightRecord(SellTicketInputs inputs) {
+    ResponseEntity<MultipleSaveResponse> createFlightRecord(@RequestBody SellTicketInputs inputs) {
         return new ResponseEntity<MultipleSaveResponse>(flightTicketService.sellTicket(inputs), HttpStatus.OK);
     }
 

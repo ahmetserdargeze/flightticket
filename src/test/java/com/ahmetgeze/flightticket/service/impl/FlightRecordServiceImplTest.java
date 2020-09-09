@@ -168,7 +168,7 @@ public class FlightRecordServiceImplTest {
         String arrivalDateString = "22-01-2015 12:15:55";
         Date departureDate = formatter.parse(departureDateString);
         Date arrivalDate = formatter.parse(arrivalDateString);
-        SaveResponse result = flightRecordService.createFlightRecord(flighRecordName, airlinesCompany.getId(), route1.getId(), flightRecordSeatCount, departureDate, arrivalDate);
+        SaveResponse result = flightRecordService.createFlightRecord(flighRecordName, airlinesCompany.getId(), route1.getId(), flightRecordSeatCount,0, departureDate, arrivalDate);
         FlightRecord insertedObject = (FlightRecord) result.getInsertedObject();
         FlightRecord insertedObjectFromRepo = flightRecordRepository.findById(insertedObject.getId()).get();
 
@@ -188,7 +188,7 @@ public class FlightRecordServiceImplTest {
             String departureDateString = "22-01-2015 12:15:55";
             Date departureDate = formatter.parse(departureDateString);
             Date arrivalDate = formatter.parse(arrivalDateString);
-            SaveResponse result = flightRecordService.createFlightRecord(flighRecordName, airlinesCompany.getId(), route1.getId(), flightRecordSeatCount, departureDate, arrivalDate);
+            SaveResponse result = flightRecordService.createFlightRecord(flighRecordName, airlinesCompany.getId(), route1.getId(), flightRecordSeatCount,0, departureDate, arrivalDate);
         });
         assertNotNull(exception);
         assertEquals(exception.getCategory(), ExceptionCategory.SERVİCE_EXCEPTİON);
@@ -206,7 +206,7 @@ public class FlightRecordServiceImplTest {
             String arrivalDateString = "22-01-2015 12:15:55";
             Date departureDate = formatter.parse(departureDateString);
             Date arrivalDate = formatter.parse(arrivalDateString);
-            SaveResponse result = flightRecordService.createFlightRecord(flighRecordName, airlinesCompany.getId(), route1.getId(), 0, departureDate, arrivalDate);
+            SaveResponse result = flightRecordService.createFlightRecord(flighRecordName, airlinesCompany.getId(), route1.getId(), 0, 0,departureDate, arrivalDate);
         });
         assertNotNull(exception);
         assertEquals(exception.getCategory(), ExceptionCategory.SERVİCE_EXCEPTİON);
@@ -222,7 +222,7 @@ public class FlightRecordServiceImplTest {
             String departureDateString = "22-01-2015 10:15:55";
             Date departureDate = formatter.parse(departureDateString);
             Date arrivalDate = null;
-            SaveResponse result = flightRecordService.createFlightRecord(flighRecordName, airlinesCompany.getId(), route1.getId(), 0, departureDate, arrivalDate);
+            SaveResponse result = flightRecordService.createFlightRecord(flighRecordName, airlinesCompany.getId(), route1.getId(), 0, 0,departureDate, arrivalDate);
         });
         assertNotNull(exception);
         assertEquals(ExceptionCategory.SERVİCE_EXCEPTİON, exception.getCategory());
